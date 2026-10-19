@@ -1,0 +1,6 @@
+{
+  "name": "Atghar High School Portal",
+  "description": "Official institutional portal of Atghar High School featuring teacher directory, students exam results lookup, notices board, social gallery, and administrative management dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

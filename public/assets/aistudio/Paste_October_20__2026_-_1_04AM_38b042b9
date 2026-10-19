@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="site-title">Atghar High School</title>
+    <style>
+        :root {
+            --primary-color: #0c4a6e;
+            --secondary-color: #0284c7;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #334155;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header Layout */
+        header {
+            background: linear-gradient(135deg, #0f172a, var(--primary-color));
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        header img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #38bdf8;
+            background-color: #fff;
+        }
+
+        .header-text h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .header-text p {
+            margin: 5px 0 0;
+            color: #bae6fd;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #1e293b;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #f1f5f9;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        /* Section Layout */
+        .container {
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 30px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 3px solid #e2e8f0;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        /* Cards Grid Layout */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #fff;
+            text-align: center;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 3px solid #e2e8f0;
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 180px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        /* Forms & Inputs */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background-color: #0369a1;
+        }
+
+        .btn-danger {
+            background-color: #ef4444;
+            margin-top: 10px;
+        }
+
+        .btn-danger:hover {
+            background-color: #dc2626;
+        }
+
+        /* Admin Dashboard Controls */
+        #admin-panel {
+            border: 2px dashed var(--secondary-color);
+            background-color: #f0f9ff;
+            display: none;
+        }
+
+        .admin-tab-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .admin-tab-buttons button {
+            background-color: #64748b;
+        }
+
+        /* Contact Links */
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            padding: 8px 15px;
+            background: #e2e8f0;
+            color: #334155;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #0f172a;
+            color: white;
+            margin-top: 40px;
+        }
+
+        /* Table Design */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f1f5f9;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <img id="display-logo" src="https://via.placeholder.com/80?text=Logo" alt="School Logo">
+        <div class="header-text">
+            <h1 id="display-school-name">Atghar High School</h1>
+            <p id="display-motto">Excellence in Education</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#teachers">Teachers</a>
+        <a href="#students">Students & Results</a>
+        <a href="#gallery">Social Gallery</a>
+        <a href="#contact">Contact Us</a>
+        <a href="#admin" id="admin-nav-btn" style="background-color: #e11d48;">Admin Login</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- Home Section -->
+        <section id="home">
+            <h2>Welcome to Our School</h2>
+            <p id="display-about">Atghar High School is committed to providing a nurturing environment for students to grow academically, socially, and personally. Our mission is to inspire lifelong learning and leadership.</p>
+        </section>
+
+        <!-- Teachers Section -->
+        <section id="teachers">
+            <h2>Our Respected Teachers</h2>
+            <div class="grid-container" id="teachers-list">
+                <!-- Teachers cards will be dynamically added here -->
+            </div>
+        </section>
+
+        <!-- Students Section -->
+        <section id="students">
+            <h2>Student Directory & Exam Results</h2>
+            <div class="form-group">
+                <label for="filter-class">Filter by Class:</label>
+                <select id="filter-class" onchange="renderStudents()">
+                    <option value="All">All Classes</option>
+                    <option value="Class 6">Class 6</option>
+                    <option value="Class 7">Class 7</option>
+                    <option value="Class 8">Class 8</option>
+                    <option value="Class 9">Class 9</option>
+                    <option value="Class 10">Class 10</option>
+                </select>
+            </div>
+            <div class="grid-container" id="students-list">
+                <!-- Students cards will be dynamically added here -->
+            </div>
+        </section>
+
+        <!-- Social Gallery Section -->
+        <section id="gallery">
+            <h2>School Activities & Gallery</h2>
+            <div class="grid-container" id="gallery-list">
+                <!-- Social Photos will be dynamically added here -->
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p><strong>Address:</strong> <span id="display-address">123 Atghar Street, City</span></p>
+            <p><strong>Phone:</strong> <span id="display-phone">+880 1234 567890</span></p>
+            <p><strong>Email:</strong> <span id="display-email">info@atgharhighschool.edu</span></p>
+            
+            <h3>Follow Us</h3>
+            <div class="social-links">
+                <a id="display-facebook" href="#" target="_blank">Facebook</a>
+                <a id="display-youtube" href="#" target="_blank">YouTube</a>
+            </div>
+        </section>
+
+        <!-- Admin Login Form Section -->
+        <section id="admin-login-sec">
+            <h2>Admin Login</h2>
+            <form id="admin-login-form">
+                <div class="form-group">
+                    <label>Enter Admin Password:</label>
+                    <input type="password" id="admin-pass-input" placeholder="Default Password: admin123" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </section>
+
+        <!-- Admin Control Panel (Hidden by default) -->
+        <section id="admin-panel">
+            <h2>Admin Dashboard Control Panel</h2>
+            <button onclick="adminLogout()" class="btn-danger" style="float: right;">Logout</button>
+            <p style="color: green; font-weight: bold;">Logged in as Admin</p>
+            <hr><br>
+
+            <!-- General Site Info Settings -->
+            <h3>1. Update School Info & Logo</h3>
+            <form id="form-site-settings">
+                <div class="form-group">
+                    <label>School Name:</label>
+                    <input type="text" id="edit-school-name" required>
+                </div>
+                <div class="form-group">
+                    <label>Motto / Subtitle:</label>
+                    <input type="text" id="edit-motto">
+                </div>
+                <div class="form-group">
+                    <label>Logo Image:</label>
+                    <input type="file" id="edit-logo-file" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label>Change Admin Password:</label>
+                    <input type="password" id="edit-admin-pass" placeholder="Leave empty to keep current password">
+                </div>
+                <button type="submit">Save General Settings</button>
+            </form>
+            <hr><br>
+
+            <!-- Add Teacher Form -->
+            <h3>2. Add New Teacher</h3>
+            <form id="form-add-teacher">
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" id="t-name" required>
+                </div>
+                <div class="form-group">
+                    <label>Designation (e.g., Headmaster, Assistant Teacher):</label>
+                    <input type="text" id="t-desig" required>
+                </div>
+                <div class="form-group">
+                    <label>Subject:</label>
+                    <input type="text" id="t-subject" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone/Email:</label>
+                    <input type="text" id="t-contact">
+                </div>
+                <div class="form-group">
+                    <label>Photo:</label>
+                    <input type="file" id="t-photo" accept="image/*">
+                </div>
+                <button type="submit">Add Teacher</button>
+            </form>
+            <hr><br>
+
+            <!-- Add Student & Result Form -->
+            <h3>3. Add Student & Result</h3>
+            <form id="form-add-student">
+                <div class="form-group">
+                    <label>Student Name:</label>
+                    <input type="text" id="s-name" required>
+                </div>
+                <div class="form-group">
+                    <label>Class:</label>
+                    <select id="s-class" required>
+                        <option value="Class 6">Class 6</option>
+                        <option value="Class 7">Class 7</option>
+                        <option value="Class 8">Class 8</option>
+                        <option value="Class 9">Class 9</option>
+                        <option value="Class 10">Class 10</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Roll Number:</label>
+                    <input type="number" id="s-roll" required>
+                </div>
+                <div class="form-group">
+                    <label>Exam Result/GPA:</label>
+                    <input type="text" id="s-result" placeholder="e.g. GPA 5.00 or Passed" required>
+                </div>
+                <div class="form-group">
+                    <label>Photo:</label>
+                    <input type="file" id="s-photo" accept="image/*">
+                </div>
+                <button type="submit">Add Student Record</button>
+            </form>
+            <hr><br>
+
+            <!-- Upload Activity/Social Photo Form -->
+            <h3>4. Add Activity / Social Photo</h3>
+            <form id="form-add-gallery">
+                <div class="form-group">
+                    <label>Caption/Title:</label>
+                    <input type="text" id="g-title" required>
+                </div>
+                <div class="form-group">
+                    <label>Photo:</label>
+                    <input type="file" id="g-photo" accept="image/*" required>
+                </div>
+                <button type="submit">Upload Photo</button>
+            </form>
+            <hr><br>
+
+            <!-- Contact Settings Form -->
+            <h3>5. Update Contact Details & Social Links</h3>
+            <form id="form-contact-settings">
+                <div class="form-group">
+                    <label>Address:</label>
+                    <input type="text" id="edit-address">
+                </div>
+                <div class="form-group">
+                    <label>Phone:</label>
+                    <input type="text" id="edit-phone">
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="text" id="edit-email">
+                </div>
+                <div class="form-group">
+                    <label>Facebook Page Link:</label>
+                    <input type="url" id="edit-facebook">
+                </div>
+                <div class="form-group">
+                    <label>YouTube Channel Link:</label>
+                    <input type="url" id="edit-youtube">
+                </div>
+                <button type="submit">Save Contact Details</button>
+            </form>
+        </section>
+
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; <span id="footer-year"></span> <span id="footer-school-name">Atghar High School</span>. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript Engine -->
+    <script>
+        // Initial LocalStorage Setup
+        let appData = JSON.parse(localStorage.getItem('atghar_school_data')) || {
+            adminPass: 'admin123',
+            siteInfo: {
+                name: 'Atghar High School',
+                motto: 'Excellence in Education',
+                logo: 'https://via.placeholder.com/80?text=Logo',
+                about: 'Atghar High School is committed to providing a nurturing environment for students to grow academically, socially, and personally.',
+                address: '123 Atghar Street, City',
+                phone: '+880 1234 567890',
+                email: 'info@atgharhighschool.edu',
+                facebook: 'https://facebook.com',
+                youtube: 'https://youtube.com'
+            },
+            teachers: [],
+            students: [],
+            gallery: []
+        };
+
+        let isAdminLoggedIn = false;
+
+        function saveData() {
+            localStorage.setItem('atghar_school_data', JSON.stringify(appData));
+            renderAll();
+        }
+
+        // Base64 File Convert Utility
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+        }
+
+        // Render Data on UI
+        function renderAll() {
+            // General Info
+            document.getElementById('site-title').innerText = appData.siteInfo.name;
+            document.getElementById('display-school-name').innerText = appData.siteInfo.name;
+            document.getElementById('footer-school-name').innerText = appData.siteInfo.name;
+            document.getElementById('display-motto').innerText = appData.siteInfo.motto;
+            document.getElementById('display-logo').src = appData.siteInfo.logo;
+            document.getElementById('display-about').innerText = appData.siteInfo.about;
+            document.getElementById('display-address').innerText = appData.siteInfo.address;
+            document.getElementById('display-phone').innerText = appData.siteInfo.phone;
+            document.getElementById('display-email').innerText = appData.siteInfo.email;
+            document.getElementById('display-facebook').href = appData.siteInfo.facebook;
+            document.getElementById('display-youtube').href = appData.siteInfo.youtube;
+            document.getElementById('footer-year').innerText = new Date().getFullYear();
+
+            // Render Lists
+            renderTeachers();
+            renderStudents();
+            renderGallery();
+        }
+
+        // Render Teachers
+        function renderTeachers() {
+            const container = document.getElementById('teachers-list');
+            container.innerHTML = '';
+            if (appData.teachers.length === 0) {
+                container.innerHTML = '<p>No teacher profiles added yet.</p>';
+                return;
+            }
+            appData.teachers.forEach((t, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <img src="${t.photo || 'https://via.placeholder.com/120'}" alt="${t.name}">
+                    <h3>${t.name}</h3>
+                    <p><strong>${t.desig}</strong></p>
+                    <p>Subject: ${t.subject}</p>
+                    <p><small>${t.contact}</small></p>
+                    ${isAdminLoggedIn ? `<button class="btn-danger" onclick="deleteItem('teachers', ${index})">Delete</button>` : ''}
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Render Students
+        function renderStudents() {
+            const container = document.getElementById('students-list');
+            const selectedClass = document.getElementById('filter-class').value;
+            container.innerHTML = '';
+
+            let filtered = appData.students;
+            if (selectedClass !== 'All') {
+                filtered = appData.students.filter(s => s.class === selectedClass);
+            }
+
+            if (filtered.length === 0) {
+                container.innerHTML = '<p>No student records found for this class.</p>';
+                return;
+            }
+
+            filtered.forEach((s, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <img src="${s.photo || 'https://via.placeholder.com/120'}" alt="${s.name}">
+                    <h3>${s.name}</h3>
+                    <p><strong>Class:</strong> ${s.class}</p>
+                    <p><strong>Roll:</strong> ${s.roll}</p>
+                    <p style="color: green; font-weight: bold;">Result: ${s.result}</p>
+                    ${isAdminLoggedIn ? `<button class="btn-danger" onclick="deleteItem('students', ${index})">Delete</button>` : ''}
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Render Social Gallery
+        function renderGallery() {
+            const container = document.getElementById('gallery-list');
+            container.innerHTML = '';
+            if (appData.gallery.length === 0) {
+                container.innerHTML = '<p>No activity photos uploaded yet.</p>';
+                return;
+            }
+            appData.gallery.forEach((g, index) => {
+                const card = document.createElement('div');
+                card.className = 'card gallery-card';
+                card.innerHTML = `
+                    <img src="${g.photo}" alt="${g.title}">
+                    <p><strong>${g.title}</strong></p>
+                    ${isAdminLoggedIn ? `<button class="btn-danger" onclick="deleteItem('gallery', ${index})">Delete</button>` : ''}
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Delete Helper Function
+        function deleteItem(type, index) {
+            if (confirm('Are you sure you want to delete this item?')) {
+                appData[type].splice(index, 1);
+                saveData();
+            }
+        }
+
+        // Admin Auth Logic
+        document.getElementById('admin-login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const inputPass = document.getElementById('admin-pass-input').value;
+            if (inputPass === appData.adminPass) {
+                isAdminLoggedIn = true;
+                document.getElementById('admin-login-sec').style.display = 'none';
+                document.getElementById('admin-panel').style.display = 'block';
+                document.getElementById('admin-nav-btn').innerText = 'Admin Dashboard';
+                loadAdminFormDefaults();
+                renderAll();
+                alert('Admin Login Successful!');
+            } else {
+                alert('Wrong Password! Default is admin123');
+            }
+        });
+
+        function adminLogout() {
+            isAdminLoggedIn = false;
+            document.getElementById('admin-panel').style.display = 'none';
+            document.getElementById('admin-login-sec').style.display = 'block';
+            document.getElementById('admin-nav-btn').innerText = 'Admin Login';
+            document.getElementById('admin-pass-input').value = '';
+            renderAll();
+        }
+
+        function loadAdminFormDefaults() {
+            document.getElementById('edit-school-name').value = appData.siteInfo.name;
+            document.getElementById('edit-motto').value = appData.siteInfo.motto;
+            document.getElementById('edit-address').value = appData.siteInfo.address;
+            document.getElementById('edit-phone').value = appData.siteInfo.phone;
+            document.getElementById('edit-email').value = appData.siteInfo.email;
+            document.getElementById('edit-facebook').value = appData.siteInfo.facebook;
+            document.getElementById('edit-youtube').value = appData.siteInfo.youtube;
+        }
+
+        // Admin Action Handlers
+        // 1. General Site Settings
+        document.getElementById('form-site-settings').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            appData.siteInfo.name = document.getElementById('edit-school-name').value;
+            appData.siteInfo.motto = document.getElementById('edit-motto').value;
+            
+            const passInput = document.getElementById('edit-admin-pass').value;
+            if (passInput) appData.adminPass = passInput;
+
+            const logoFile = document.getElementById('edit-logo-file').files[0];
+            if (logoFile) {
+                appData.siteInfo.logo = await fileToBase64(logoFile);
+            }
+
+            saveData();
+            alert('Site Settings Updated!');
+        });
+
+        // 2. Add Teacher
+        document.getElementById('form-add-teacher').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const photoFile = document.getElementById('t-photo').files[0];
+            let photoUrl = '';
+            if (photoFile) photoUrl = await fileToBase64(photoFile);
+
+            const newTeacher = {
+                name: document.getElementById('t-name').value,
+                desig: document.getElementById('t-desig').value,
+                subject: document.getElementById('t-subject').value,
+                contact: document.getElementById('t-contact').value,
+                photo: photoUrl
+            };
+
+            appData.teachers.push(newTeacher);
+            saveData();
+            this.reset();
+            alert('Teacher Added Successfully!');
+        });
+
+        // 3. Add Student
+        document.getElementById('form-add-student').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const photoFile = document.getElementById('s-photo').files[0];
+            let photoUrl = '';
+            if (photoFile) photoUrl = await fileToBase64(photoFile);
+
+            const newStudent = {
+                name: document.getElementById('s-name').value,
+                class: document.getElementById('s-class').value,
+                roll: document.getElementById('s-roll').value,
+                result: document.getElementById('s-result').value,
+                photo: photoUrl
+            };
+
+            appData.students.push(newStudent);
+            saveData();
+            this.reset();
+            alert('Student Record Added!');
+        });
+
+        // 4. Add Gallery Photo
+        document.getElementById('form-add-gallery').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const photoFile = document.getElementById('g-photo').files[0];
+            if (photoFile) {
+                const photoUrl = await fileToBase64(photoFile);
+                const newGallery = {
+                    title: document.getElementById('g-title').value,
+                    photo: photoUrl
+                };
+                appData.gallery.push(newGallery);
+                saveData();
+                this.reset();
